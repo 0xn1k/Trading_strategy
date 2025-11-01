@@ -41,7 +41,9 @@ When MA_short < MA_long
 
 **Meaning:**
 - Recent prices are falling below the long-term trend.
-- Market momentum is shifting **downward**.
+- Market momentum is shifting 
+
+**downward**.
 
 **Action:**
 
@@ -61,9 +63,9 @@ So the **crossover** marks the **exact point where trend direction changes**.
 
 ## Visual Concept (Text Sketch)
 
-Prices: _///_//___
-Long MA: ------------------- smooth line
-Short MA: ~~~~~~~~~~~~~~~~~~~~ faster line
+- Prices: _///_//___
+- Long MA: ------------------- smooth line
+- Short MA: ~~~~~~~~~~~~~~~~~~~~ faster line
 
 
 
