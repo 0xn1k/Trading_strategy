@@ -234,6 +234,12 @@ def plot_ema_analysis(data, symbol, ema_windows=[12, 26, 50]):
         ax3.grid(True, alpha=0.3)
 
     plt.tight_layout()
+
+    # Save the plot as JPEG
+    filename = f"{symbol.replace('^', '').replace('.', '_')}_ema_analysis.jpg"
+    plt.savefig(filename, format='jpg', dpi=300, bbox_inches='tight')
+    print(f"Graph saved as: {filename}")
+
     plt.show()
 
 def compare_ema_vs_sma(data, ema_window=20, sma_window=20):

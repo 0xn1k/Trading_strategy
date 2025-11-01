@@ -1,13 +1,24 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 import yfinance as yf
+from datetime import datetime, timedelta
 
-# Symbol for NIFTY 50 index
-symbol = "^NSEI"
 
-# Download last 5 years data
-df = yf.download(symbol, period="5y")
+def load_stock_data(symbol, period='1y', interval='1d'): 
+    try:
+        stock = yf.Ticker(symbol)
+        data = stock.history(period=period, interval=interval)
+        return data
+    except Exception as e:
+        print(f"Error loading data for {symbol}: {e}")
+        return pd.DataFrame()       
 
-print(df.head())
+if __name__ == "__main__":
+      # Example usage - Indian stocks
+    symbol = "^NSEI"  # Nifty 50 Index
+    print(f"Analyzing SMA strategy for {symbol}")
 
-# Save to CSV
-df.to_csv("nifty50_data.csv")
-print("\nData saved successfully to nifty50_data.csv")
+    # Load data
+    data = load_stock_data(symbol, period='2y')
+    print(data.head())

@@ -161,6 +161,10 @@ def plot_sma_analysis(data, symbol, sma_windows=[20, 50, 200]):
         ax2.legend()
 
     plt.tight_layout()
+    # Save the plot as JPEG
+    filename = f"{symbol.replace('^', '').replace('.', '_')}_sma_analysis.jpg"
+    plt.savefig(filename, format='jpg', dpi=300, bbox_inches='tight')
+    print(f"Graph saved as: {filename}")
     plt.show()
 
 if __name__ == "__main__":
