@@ -79,21 +79,22 @@ So the **crossover** marks the **exact point where trend direction changes**.
 | `MA_short < MA_long`   | Recent trend weaker than long     | **Sell/Exit** |
 
 ---
-
-# Moving Average Crossover Strategy (with SMA & EMA Formulas)
+# Moving Average Formulas (SMA & EMA)
 
 ## 1. Simple Moving Average (SMA)
 
-**Formula:**
-\[
-SMA_{N} = \frac{P_{1} + P_{2} + ... + P_{N}}{N}
-\]
+**Formula (display):**
 
-Where:
-- \( P_{1}, P_{2}, ..., P_{N} \) = closing prices for the last **N** periods  
-- \( N \) = number of periods (e.g., 20, 50, 200)
+$$
+\mathrm{SMA}_N \;=\; \frac{P_{1} + P_{2} + \dots + P_{N}}{N}
+$$
 
-**Interpretation:** SMA represents the **average price trend** over the last **N** days.
+**Where:**
+
+- \(P_{1}, P_{2}, \dots, P_{N}\) are the closing prices for the last \(N\) periods.  
+- \(N\) is the number of periods (e.g., 20, 50, 200).
+
+**Interpretation:** SMA represents the average price trend over the last \(N\) periods.
 
 ---
 
@@ -101,22 +102,42 @@ Where:
 
 EMA gives **more weight to recent prices**.
 
-**Step 1:** Calculate smoothing factor:
-\[
-k = \frac{2}{N+1}
-\]
+**Step 1 — smoothing factor:**
 
-**Step 2:** Apply EMA formula:
-\[
-EMA_{\text{today}} = (P_{\text{today}} \times k) + (EMA_{\text{yesterday}} \times (1 - k))
-\]
+$$
+k \;=\; \frac{2}{N + 1}
+$$
 
-Where:
-- \( P_{\text{today}} \) = today’s closing price  
-- \( k \) = smoothing factor  
-- \( EMA_{\text{yesterday}} \) = previous day's EMA value  
+**Step 2 — recursive EMA formula (display):**
+
+$$
+\mathrm{EMA}_{\text{today}} \;=\; \bigl(P_{\text{today}} \times k\bigr) \;+\; \bigl(\mathrm{EMA}_{\text{yesterday}} \times (1 - k)\bigr)
+$$
+
+**Where:**
+
+- \(P_{\text{today}}\) is today’s closing price.  
+- \(k\) is the smoothing factor defined above.  
+- \(\mathrm{EMA}_{\text{yesterday}}\) is the previous period’s EMA (seed EMA with SMA of first \(N\) periods or set it to the first close).
 
 ---
+
+## 3. Crossover rule (quick recap)
+
+**Buy (uptrend):**
+
+$$
+\text{If }\; \mathrm{MA}_{\text{short}} > \mathrm{MA}_{\text{long}} \quad\Rightarrow\quad \text{Buy / Go long}
+$$
+
+**Sell (downtrend):**
+
+$$
+\text{If }\; \mathrm{MA}_{\text{short}} < \mathrm{MA}_{\text{long}} \quad\Rightarrow\quad \text{Sell / Exit}
+$$
+
+---
+
 
 ## 3. Trading Signals (Crossover Rules)
 
@@ -160,5 +181,6 @@ The point where Δ changes sign is the **trend reversal point**.
 | `MA_short < MA_long` | Downtrend forming | **Sell / Exit Position** |
 
 ---
+
 
 
